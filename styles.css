@@ -4,6 +4,8 @@
     --color-pink: #56cfe1;
     --color-purple: #72efdd;
     --color-green: #80ffdb;
+    --color-yellow: #d8a50b;
+    --color-orange: #e3940b;
 
     --dark-bg: #010101;
     --darker-bg: #0a0a0a;
@@ -791,7 +793,10 @@ nav {
 .timeline-content .company-name {
     font-size: 16px;
     font-weight: 600;
-    color: var(--text-color);
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     margin: 0 0 15px 0;
 }
 
