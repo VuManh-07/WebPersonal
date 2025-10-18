@@ -36,11 +36,11 @@ body {
 }
 
 /* navigation */
-nav {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
+    padding: 2rem 5%;
     position: fixed;
     width: 100%;
     z-index: 100;
@@ -50,8 +50,8 @@ nav {
 
 .logo {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 10px;
     font-size: 1.8rem;
     font-weight: 700;
     background: linear-gradient(90deg, var(--color-blue), var(--color-pink));
@@ -65,19 +65,14 @@ nav {
     margin-left: 0.5rem;
 }
 
-.nav-links {
+nav ul {
     display: flex;
+    list-style: none;
     gap: 2rem;
 }
 
-.menu-toggle {
-    display: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: var(--text-color);
-}
-
-.nav-links a {
+nav ul a {
+    padding: 5px 0;
     color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
@@ -85,11 +80,11 @@ nav {
     transition: all 0.3s ease;
 }
 
-.nav-links a:hover {
+nav ul a:hover {
     color: var(--color-blue);
 }
 
-.nav-links a::after {
+nav ul a::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -100,8 +95,15 @@ nav {
     transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after {
+nav ul a:hover::after {
     width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-color);
 }
 
 /* hero section */
@@ -121,7 +123,7 @@ nav {
     margin: 0 auto;
     flex-direction: row;
     gap: 80px;
-    padding: 120px 40px 60px;
+    padding: 120px 0px 0px;
     min-height: 100vh;
 }
 
@@ -397,7 +399,7 @@ nav {
 }
 
 .skills-container {
-    max-width: 1100px;
+    max-width: var(--max-width);
     margin: 0 auto;
 }
 
@@ -529,29 +531,7 @@ nav {
     transition: width 1s ease-out;
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 900px) {
-    .skills-content-wrapper {
-        flex-direction: column;
-        /* Chuyển thành một cột */
-        gap: 30px;
-    }
 
-    .skills-description,
-    .skills-bars-group {
-        min-width: unset;
-        /* Loại bỏ min-width */
-        width: 100%;
-    }
-
-    .section-title {
-        font-size: 38px;
-    }
-
-    .section-sub-title {
-        font-size: 16px;
-    }
-}
 
 @media (max-width: 600px) {
     .skills-section {
@@ -578,13 +558,13 @@ nav {
 /* Project section */
 .projects {
     justify-items: center;
+    padding: 80px 20px;
 }
 
 .projects-container {
-    width: 100%;
     max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 5rem 1%;
+    width: 100%;
+    margin: 0 auto; 
     position: relative;
 }
 
@@ -668,13 +648,13 @@ nav {
 /* section work */
 .works {
     justify-items: center;
+    padding: 80px 20px;
 }
 
 .works-container {
     width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 5rem 1%;
     position: relative;
 }
 
@@ -721,12 +701,10 @@ nav {
 /* Căn chỉnh các mục xen kẽ trái/phải */
 .timeline-element:nth-child(odd) {
     left: 0;
-    padding-right: 60px;
 }
 
 .timeline-element:nth-child(even) {
     left: 50%;
-    padding-left: 60px;
 }
 
 /* Animation delay */
@@ -830,12 +808,12 @@ nav {
 }
 
 .timeline-element:nth-child(odd) .content-arrow {
-    right: -14px;
+    right: -8px;
     border-left: 7px solid var(--card-background);
 }
 
 .timeline-element:nth-child(even) .content-arrow {
-    left: -14px;
+    left: -8px;
     border-right: 7px solid var(--card-background);
 }
 
@@ -885,8 +863,35 @@ nav {
     }
 }
 
-/* --- RESPONSIVE CHO MÀN HÌNH NHỎ (< 900px) --- */
-@media screen and (max-width: 900px) {
+/* Responsive design */
+@media (max-width: 992px) {
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        justify-content: flex-start;
+        gap: 60px;
+        padding: 120px 20px 40px;
+    }
+
+    .cta-button {
+        justify-content: center;
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
+
+    .work-timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(90deg, var(--color-blue), var(--color-pink));
+        border-radius: 2px;
+    }
 
     /* Chuyển về 1 cột */
     .vertical-timeline::before {
@@ -937,60 +942,162 @@ nav {
         left: auto !important;
         right: auto !important;
     }
-}
 
-/* Responsive design */
-@media (max-width: 992px) {
-    .hero-container {
+    .skills-content-wrapper {
         flex-direction: column;
-        text-align: center;
-        padding-top: 120px;
+        /* Chuyển thành một cột */
+        gap: 30px;
     }
 
-    .hero-content {
-        margin-bottom: 3rem;
+    .skills-description,
+    .skills-bars-group {
+        min-width: unset;
+        /* Loại bỏ min-width */
+        width: 100%;
     }
 
-    .about-content {
-        flex-direction: column;
+    .section-title {
+        font-size: 38px;
     }
 
-    .cta-button {
-        justify-content: center;
-    }
-
-
-    .work-timeline::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        transform: translateX(-50%);
-        width: 4px;
-        height: 100%;
-        background: linear-gradient(90deg, var(--color-blue), var(--color-pink));
-        border-radius: 2px;
+    .section-sub-title {
+        font-size: 16px;
     }
 
 }
 
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
+    header {
+        padding: 15px 20px;
     }
 
-    .hero-container h1 {
-        font-size: 2rem;
+    nav ul {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100hv - 70px);
+        background-color: rgba(12, 15, 23, 0.95);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 50px;
+        transition: left 0.3s ease;
+    }
+
+    nav ul.active {
+        left: 0;
+        padding: 20px;
+    }
+
+    nav a {
+        font-size: 1.2rem;
+        padding: 15px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1rem;
     }
 
     .profile-container {
-        width: 300px;
-        height: 300px
+        width: 200px;
+        height: 200px;
     }
 
     .profile-img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .border-outer {
+        height: 250px;
+        width: 250px;
+    }
+
+    .border-middle {
+        height: 225px;
+        width: 225px;
+    }
+
+    .border-inner {
+        height: 200px;
+        width: 200px;
+    }
+
+    .border-container::after {
+        height: 215px;
+        width: 215px;
+    }
+
+    .pulse-ring {
         width: 250px;
         height: 250px;
     }
+}
 
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-container {
+        height: 200px;
+        width: 200px;
+    }
+
+    .profile-img {
+        height: 160px;
+        width: 160px;
+    }
+
+    .border-outer {
+        height: 200px;
+        width: 200px;
+    }
+
+    .border-middle {
+        height: 180px;
+        width: 180px;
+    }
+
+    .border-inner {
+        height: 160px;
+        width: 160px;
+    }
+
+    .border-container::after {
+        height: 170px;
+        width: 170px;
+    }
+
+    .pulse-ring {
+        height: 200px;
+        width: 200px;
+    }
 }
